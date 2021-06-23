@@ -18,17 +18,17 @@
 
 ## items テーブル  (商品情報)
 
-| Column           | Type       | Option              |
-| ---------------- | ---------- | ------------------- |
+| Column           | Type       | Option                         |
+| ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
-| product_name     | string     | null: false         |
-| description      | text       | null: false         |
-| category_id      | integer    | null: false         |
-| status_id        | integer    | null: false         |
-| shipping_fee_id  | integer    | null: false         |
-| shipping_form_id | integer    | null: false         |
-| days_ship_id     | integer    | null: false         |
-| price            | integer    | null: false         |
+| product_name     | string     | null: false                    |
+| description      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| shipping_fee_id  | integer    | null: false                    |
+| shipping_form_id | integer    | null: false                    |
+| days_ship_id     | integer    | null: false                    |
+| price            | integer    | null: false                    |
 
 ### Association
 - belongs_to :user
@@ -36,8 +36,8 @@
 
 ## Orders テーブル  (購入記録)
 
-| Column          | Type       | Option                        |
-| --------------- | ---------- | ------------------------------|
+| Column          | Type       | Option                         |
+| --------------- | ---------- | -------------------------------|
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
 
