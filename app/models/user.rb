@@ -12,6 +12,7 @@ class User < ApplicationRecord
     validates :first_name_kana, format: {with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters."}
     validates :birthday
   end
+    # validates :password, format: {with: /(?=.*[a-zA-Z])(?=.*¥d)[a-zA-Z¥d]{7,}/, message: "is invalid. Input half-width characters."}
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Input half-width characters.' 
 end
