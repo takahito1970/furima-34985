@@ -12,8 +12,9 @@ class Item < ApplicationRecord
     validates :image
     validates :product_name
     validates :description
-    validates :price, format: { with: /\A[0-9]+\z/, message: 'Price Harf-widch number' },numericality: {greater_than: 299,less_than: 10000000, message:'Price Out setting range'}
+    validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Harf-widch number' }
   end
+  validates :price, numericality: { greater_than: 299, less_than: 10_000_000, message: 'Out setting range' }
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
@@ -21,6 +22,4 @@ class Item < ApplicationRecord
     validates :shipping_form_id
     validates :day_ship_id
   end
-
-
 end
