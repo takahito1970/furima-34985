@@ -14,8 +14,9 @@ RSpec.describe Item, type: :model do
 
     context '商品出品がうまくいかないとき' do
       it 'user_idからの場合、商品出品ページへ遷移出来ない' do
-        @items.user_id = ''
+        @items.user = nil
         @items.valid?
+        expect(@items.errors.full_messages).to include("User must exist")
       end
       it '商品画像がないと出品出来ない' do
         @items.image = nil
@@ -33,22 +34,22 @@ RSpec.describe Item, type: :model do
         expect(@items.errors.full_messages).to include("Description can't be blank")
       end
       it 'カテゴリーの情報がないと出品出来ない' do
-        @items.category_id = '1'
+        @items.category_id = 1
         @items.valid?
         expect(@items.errors.full_messages).to include('Category must be other than 1')
       end
       it '商品の状態についての情報がないと出品できない' do
-        @items.status_id = '1'
+        @items.status_id = 1
         @items.valid?
         expect(@items.errors.full_messages).to include('Status must be other than 1')
       end
       it '配送料の負担についての情報がないと出品出来ない' do
-        @items.shipping_fee_id = '1'
+        @items.shipping_fee_id = 1
         @items.valid?
         expect(@items.errors.full_messages).to include('Shipping fee must be other than 1')
       end
       it '発送元の地域についての情報がないと出品できない' do
-        @items.shipping_form_id = '1'
+        @items.shipping_form_id = 1
         @items.valid?
         expect(@items.errors.full_messages).to include('Shipping form must be other than 1')
       end
