@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
       it 'user_idからの場合、商品出品ページへ遷移出来ない' do
         @items.user = nil
         @items.valid?
-        expect(@items.errors.full_messages).to include("User must exist")
+        expect(@items.errors.full_messages).to include('User must exist')
       end
       it '商品画像がないと出品出来ない' do
         @items.image = nil
