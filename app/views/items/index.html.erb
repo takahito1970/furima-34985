@@ -129,7 +129,6 @@
 
       <% @items.each do |item| %>
         <ul class='item-lists'>
-         <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
           <li class='list'>
             <%= link_to "#" do %>
               <div class='item-img-content'>
@@ -157,7 +156,7 @@
             <% end %>
           </li>
         <% end %>
-        
+
           <% if @items.length == 0 %> 
           <li class='list'>
             <%= link_to '#' do %>
