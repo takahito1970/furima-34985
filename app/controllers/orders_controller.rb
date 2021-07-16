@@ -1,4 +1,4 @@
-# class OrdersController < ApplicationController
+class OrdersController < ApplicationController
 #   def index
 #   end
 
@@ -8,4 +8,4 @@
 #   def create
 #   end
 
-# end
+end
