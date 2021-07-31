@@ -25,8 +25,8 @@ RSpec.describe Item, type: :model do
       end
       it '商品名がないと出品出来ない' do
         @items.product_name = ''
-        @items.valid?
-        expect(@items.errors.full_messages).to include("Product name can't be blank")
+        @items.valid?expect(@items.errors.full_messages).to include("Product name can't be blank")
+        
       end
       it '商品の説明がないと出品出来ない' do
         @items.description = ''
