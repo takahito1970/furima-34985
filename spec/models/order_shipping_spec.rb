@@ -13,9 +13,9 @@ RSpec.describe OrderShipping, type: :model do
       it '必要な情報を適切に入力すると、商品の購入ができること' do
         expect(@order_shipping).to be_valid
       end
-      it '建物名は空でもでも保存できる'do
-      @order_shipping.building_name = ''
-      expect(@order_shipping).to be_valid
+      it '建物名は空でもでも保存できる' do
+        @order_shipping.building_name = ''
+        expect(@order_shipping).to be_valid
       end
     end
 
@@ -28,7 +28,7 @@ RSpec.describe OrderShipping, type: :model do
       it '都道府県が空だと保存できないこと' do
         @order_shipping.shipping_form_id = 1
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include()
+        expect(@order_shipping.errors.full_messages).to include
       end
       it '市区町村が空だと保存できないこと' do
         @order_shipping.minicipality = ''
@@ -48,14 +48,14 @@ RSpec.describe OrderShipping, type: :model do
       it '郵便番号にはハイフンがないと保存できないこと' do
         @order_shipping.postar_code = '1234567'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include()
+        expect(@order_shipping.errors.full_messages).to include
       end
-      it '電話番号は11桁以内以内の数値以外は保存できない事'do
+      it '電話番号は11桁以内以内の数値以外は保存できない事' do
         @order_shipping.phone_number = '090123456789'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include()
+        expect(@order_shipping.errors.full_messages).to include
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_shipping.token = nil
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Token can't be blank")
