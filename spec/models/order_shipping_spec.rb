@@ -55,10 +55,25 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include
       end
+      it '電話番号が半角数字のみでないと登録できないこと' do
+        @order_shipping.phone_number = '090-1234-5678'
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include
+      end
       it 'tokenが空では登録できないこと' do
         @order_shipping.token = nil
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空では購入できないこと' do
+        @order_shipping.user_id = ''
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include
+      end
+      it 'item_idが空では購入できないこと' do
+        @order_shipping.item_id = ''
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include
       end
     end
   end

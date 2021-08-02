@@ -4,8 +4,7 @@ class OrdersController < ApplicationController
   def index
     @order_shipping = OrderShipping.new
     @item = Item.find(params[:item_id])
-    redirect_to root_path if @item.order.present?
-    redirect_to root_path if current_user == @item.user
+    redirect_to root_path if @item.order.present? || current_user == @item.user
   end
 
   def create

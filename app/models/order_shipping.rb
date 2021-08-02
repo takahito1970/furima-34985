@@ -11,7 +11,7 @@ class OrderShipping
     validates :minicipality
     validates :address
     validates :phone_number
-    validates :token, presence: true
+    validates :token
   end
 
   validates :shipping_form_id, numericality: { other_than: 1 }
