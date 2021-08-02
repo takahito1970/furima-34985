@@ -17,18 +17,26 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.building_name = ''
         expect(@order_shipping).to be_valid
       end
+      it '電話番号が11桁以内の数値であれば保存できる' do
+        @order_shipping.phone_number = '12345678901'
+        expect(@order_shipping).to be_valid
+      end
+      it '郵便番号の保存にはハイフン有りの情報だけが保存できる' do
+        @order_shipping.postal_code = '123-4567'
+        expect(@order_shipping).to be_valid
+      end
     end
 
     context '商品購入がうまくいかない時' do
       it '郵便番号が空だと保存できないこと' do
-        @order_shipping.postar_code = ''
+        @order_shipping.postal_code = ''
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Postar code can't be blank")
+        expect(@order_shipping.errors.full_messages).to include("Postal code can't be blank")
       end
       it '都道府県が空だと保存できないこと' do
         @order_shipping.shipping_form_id = 1
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include
+        expect(@order_shipping.errors.full_messages).to include('Shipping form must be other than 1')
       end
       it '市区町村が空だと保存できないこと' do
         @order_shipping.minicipality = ''
@@ -46,19 +54,19 @@ RSpec.describe OrderShipping, type: :model do
         expect(@order_shipping.errors.full_messages).to include("Phone number can't be blank")
       end
       it '郵便番号にはハイフンがないと保存できないこと' do
-        @order_shipping.postar_code = '1234567'
+        @order_shipping.postal_code = '1234567'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include
+        expect(@order_shipping.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '電話番号は11桁以内以内の数値以外は保存できない事' do
         @order_shipping.phone_number = '090123456789'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include
+        expect(@order_shipping.errors.full_messages).to include("Phone number Phone number can't be blank")
       end
       it '電話番号が半角数字のみでないと登録できないこと' do
         @order_shipping.phone_number = '090-1234-5678'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include
+        expect(@order_shipping.errors.full_messages).to include("Phone number Phone number can't be blank")
       end
       it 'tokenが空では登録できないこと' do
         @order_shipping.token = nil
@@ -68,12 +76,12 @@ RSpec.describe OrderShipping, type: :model do
       it 'user_idが空では購入できないこと' do
         @order_shipping.user_id = ''
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include
+        expect(@order_shipping.errors.full_messages).to include("User can't be blank")
       end
       it 'item_idが空では購入できないこと' do
         @order_shipping.item_id = ''
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include
+        expect(@order_shipping.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

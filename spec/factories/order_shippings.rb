@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order_shipping do
-    postar_code { '123-4567' }
+    postal_code { '123-4567' }
     shipping_form_id { 2 }
     minicipality { '福岡市博多区' }
     address { '中洲1-1' }
