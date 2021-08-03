@@ -15,7 +15,7 @@ class OrderShipping
   end
 
   validates :shipping_form_id, numericality: { other_than: 1 }
-  validates :phone_number, format: { with: /\A[0-9]{10,11}\z/, message: "Phone number can't be blank" }
+  validates :phone_number, format: { with: /\A[0-9]{10,11}\z/, message: "can't be blank" }
   validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
 
   def save

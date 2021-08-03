@@ -61,12 +61,12 @@ RSpec.describe OrderShipping, type: :model do
       it '電話番号は11桁以内以内の数値以外は保存できない事' do
         @order_shipping.phone_number = '090123456789'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Phone number Phone number can't be blank")
+        expect(@order_shipping.errors.full_messages).to include("Phone number can't be blank")
       end
       it '電話番号が半角数字のみでないと登録できないこと' do
         @order_shipping.phone_number = '090-1234-5678'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Phone number Phone number can't be blank")
+        expect(@order_shipping.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'tokenが空では登録できないこと' do
         @order_shipping.token = nil

@@ -6,7 +6,7 @@ class CreateShippings < ActiveRecord::Migration[6.0]
       t.integer :shipping_form_id, null: false
       t.string :minicipality, null: false
       t.string :address, null: false
-      t.string :building_name, null: false
+      t.string :building_name
       t.string :phone_number, null: false
 
       t.timestamps
