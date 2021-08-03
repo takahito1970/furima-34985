@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee
   belongs_to :shipping_form
   belongs_to :day_ship
+  has_one :order
 
   with_options presence: true do
     validates :image
