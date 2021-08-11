@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   end
 
   def sold_out
-    redirect_to root_path @item.order.present?
+    redirect_to root_path if @item.order.present?
   end
 
   def item_params
